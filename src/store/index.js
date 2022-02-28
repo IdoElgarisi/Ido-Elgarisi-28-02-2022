@@ -81,15 +81,16 @@ export default new Vuex.Store({
       context.commit({ type: 'removeFavorite', cityCode });
     },
     async setFavoritesCitiesWeather(context, { favoriteCities }) {
+      console.log(favoriteCities);
       const newList = []
-      await favoriteCities.map(async (favoriteCity) => {
+      await favoriteCities?.map(async (favoriteCity) => {
         const dailyWeather = await weatherService.getDailyWeather(favoriteCity.city.Key)
         newList.push({ city: { ...favoriteCity.city }, dailyWeather })
-        if (newList.length === favoriteCities.length) {
-          context.commit({ type: 'setFavoritesList', newList });
-          favoritesService.updateFavoritesList(newList)
-        }
       })
+      if (newList.length === favoriteCities?.length) {
+        context.commit({ type: 'setFavoritesList', newList });
+        favoritesService.updateFavoritesList(newList)
+      }
     }
   },
   modules: {

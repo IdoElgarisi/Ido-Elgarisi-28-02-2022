@@ -12,8 +12,18 @@
         >
           <div class="flex justify-center align-center">
             <div class="weather-icon">
-              <img
+              <!-- <img
                 :src="require(`../assets/icons/${dailyForecast.Day.Icon}.svg`)"
+                alt=""
+              /> -->
+              <img
+                :src="
+                  require(`../assets/icons/${
+                    availableIcons.includes(dailyForecast.Day.Icon)
+                      ? dailyForecast.Day.Icon
+                      : 1
+                  }.svg`)
+                "
                 alt=""
               />
             </div>
@@ -41,9 +51,25 @@ export default {
     return {
       weeklyPropsData: null,
       fiveDaysForecast: null,
+      availableIcons: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "12",
+        "13",
+        "14",
+        "18",
+        "22",
+        "34",
+      ],
     };
   },
   created() {
+    console.log("this.availableIcons",this.availableIcons);
     this.weeklyPropsData = this.weeklyData;
     this.fiveDaysForecast = this.weeklyData.DailyForecasts;
   },

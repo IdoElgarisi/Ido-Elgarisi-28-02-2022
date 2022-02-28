@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <div class="favorites-page flex align-center justify-center">
+    <div class="favorites-page flex justify-center">
       <div
         v-if="this.favoritesList[0]"
         class="favorites-list-container flex align-center justify-center"
@@ -51,7 +51,7 @@ export default {
   },
   async created() {
     await this.loadFavoritesList();
-    await this.getFavoritesDailyWeather();
+    this.getFavoritesDailyWeather();
   },
   mounted() {},
   methods: {
@@ -71,11 +71,6 @@ export default {
   computed: {
     favoritesList() {
       return this.$store.getters.favoritesList;
-    },
-  },
-  watch: {
-    favoritesList(val, oldVal) {
-      if (val !== oldVal) this.getFavoritesDailyWeather(this.favoritesList);
     },
   },
 };

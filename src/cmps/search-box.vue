@@ -11,7 +11,7 @@
         />
       </section>
     </section>
-    <section class="results-container" v-if="this.searchTxt">
+    <section class="results-container" v-if="this.isResultsModalOn">
       <ul class="search-results-list">
         <li
           v-for="place in places"
@@ -27,6 +27,11 @@
         </li>
       </ul>
     </section>
+    <div
+      class="screen"
+      v-bind:class="{ open: this.isResultsModalOn }"
+      @click="onToggleResultsModal"
+    ></div>
   </div>
 </template>
 
@@ -37,6 +42,7 @@ export default {
   data() {
     return {
       searchTxt: "",
+      isResultsModalOn: false,
     };
   },
   mounted() {
@@ -45,14 +51,22 @@ export default {
   },
   methods: {
     async onSearch() {
+      this.isResultsModalOn = true;
       this.$emit("setPlacesSearch", this.searchTxt);
     },
     onSelectPlace(place) {
       this.$emit("selectCity", place);
       this.searchTxt = "";
     },
+    onToggleResultsModal() {
+      this.isResultsModalOn = !this.isResultsModalOn;
+    },
   },
   computed: {},
-  watch: {},
+  watch: {
+    searchTxt() {
+      if (this.searchTxt === "") this.isResultsModalOn = false;
+    },
+  },
 };
 </script>

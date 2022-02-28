@@ -7,6 +7,7 @@
         .search-box {
             input {
                 width: 200px;
+                height: 25px;
             }
         }
     }
@@ -25,12 +26,26 @@
                 border-radius: 3px;
                 font-size: 0.875rem;
                 padding-inline-start: 2px;
-                transition: all .5s;
+                transition: all 0.5s;
                 cursor: pointer;
                 &:hover {
                     background-color: lighten($color: $bsPrimary, $amount: 40%);
                 }
             }
         }
+    }
+}
+.screen {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    height: 100vh;
+    pointer-events: none;
+    cursor: pointer;
+    width: 100vw;
+    &.open {
+        z-index: 0;
+        pointer-events: all;
+        background-color: lighten($color: rgba(1, 1, 1, 0.39), $amount: 10%);
     }
 }

@@ -3,7 +3,13 @@
     <div class="weather-mini-box-left flex align-center space-between">
       <div class="mini-city-icon flex align-center justify-center">
         <img
-          :src="require(`../assets/icons/${this.dailyData.WeatherIcon}.svg`)"
+          :src="
+            require(`../assets/icons/${
+              this.availableIcons.includes(this.dailyData.WeatherIcon)
+                ? this.dailyData.WeatherIcon
+                : 1
+            }.svg`)
+          "
           alt=""
         />
       </div>
@@ -33,6 +39,21 @@ export default {
   data() {
     return {
       isFavoriteCity: true,
+      availableIcons: [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "12",
+        "13",
+        "14",
+        "18",
+        "22",
+        "34",
+      ],
     };
   },
   created() {
@@ -62,6 +83,10 @@ export default {
   computed: {
     favoritesList() {
       return this.$store.getters.favoritesList;
+    },
+    weatherIcon(iconNum) {
+      console.log(iconNum);
+      return;
     },
   },
   watch: {

@@ -2,13 +2,12 @@
 'use strict';
 import axios from 'axios';
 const BASE_URL = 'http://dataservice.accuweather.com/'
-const API_KEY = 'TgYtabzAjV5E1sLMVho1Tr7LHSC6h7tu'
-// const API_KEY = 'IbVtembGIrtagwacXuqWSYzLVJJG1Y2n'
+// const API_KEY = 'TgYtabzAjV5E1sLMVho1Tr7LHSC6h7tu'
+const API_KEY = 'IbVtembGIrtagwacXuqWSYzLVJJG1Y2n'
 const LOCATIONS_URL = `${BASE_URL}locations/v1/cities/autocomplete?apikey=${API_KEY}&q=`
 const CURRENT_WEATHER_URL1 = `${BASE_URL}currentconditions/v1/`;
 const CURRENT_WEATHER_URL2 = `?apikey=${API_KEY}`;
 const WEEKLY_WEATHER_URL = `${BASE_URL}forecasts/v1/daily/5day/`;
-
 export default {
     getAutoPlaces,
     getDailyWeather,

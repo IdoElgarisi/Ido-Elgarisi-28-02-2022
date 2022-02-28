@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-import CitiesSearch from "../cmps/cities-search.vue";
+import CitiesSearch from "../cmps/search-box.vue";
 import WeeklyWeather from "../cmps/weekly-weather.vue";
 
 export default {
