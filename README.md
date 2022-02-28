@@ -1,4 +1,4 @@
-# cars
+# Weather
 
 ## Project setup
 ```
