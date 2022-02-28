@@ -1,0 +1,21 @@
+// Setup
+@import "setup/variables";
+@import "setup/functions";
+@import "setup/mixins";
+@import "setup/typography";
+
+// Basics
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/base";
+.app {
+    background-color: $Clr3;
+}
+// Cmps
+@import "cmps/app-header";
+@import "cmps/weekley-weather";
+@import "cmps/search-box";
+@import "cmps/data-error";
+//Views
+@import "views/home";
+@import "views/favorites";
