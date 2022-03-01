@@ -84,13 +84,12 @@ export default {
     favoritesList() {
       return this.$store.getters.favoritesList;
     },
-    weatherIcon(iconNum) {
-      console.log(iconNum);
-      return;
-    },
   },
   watch: {
     favoritesList() {
+      this.checkIfFavorite();
+    },
+    city() {
       this.checkIfFavorite();
     },
   },

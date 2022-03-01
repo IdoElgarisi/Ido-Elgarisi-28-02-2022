@@ -6,7 +6,8 @@
           <h1>Weather App</h1>
         </router-link>
       </div>
-      <div class="nav-bar-container">
+      <theme-toggle />
+      <div class="nav-bar-container flex align-center">
         <nav class="nav-bar flex align-center space-between">
           <router-link to="/">Home</router-link>
           <router-link to="/favorites">Favorites</router-link>
@@ -17,9 +18,24 @@
 </template>
 
 <script>
+import ThemeToggle from "./theme-toggle.vue";
 export default {
-  components: {},
+  data() {
+    return {
+      isDarkMode: true,
+    };
+  },
+  components: { ThemeToggle },
   methods: {},
-  computed: {},
+  computed: {
+    isDarkModeOn() {
+      return this.$store.getters.isDarkModeOn;
+    },
+  },
+  watch: {
+    isDarkModeOn() {
+      this.isDarkMode = this.isDarkModeOn;
+    },
+  },
 };
 </script>

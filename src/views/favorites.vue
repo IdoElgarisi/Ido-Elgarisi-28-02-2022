@@ -51,7 +51,7 @@ export default {
   },
   async created() {
     await this.loadFavoritesList();
-    this.getFavoritesDailyWeather();
+    await this.getFavoritesDailyWeather();
   },
   mounted() {},
   methods: {

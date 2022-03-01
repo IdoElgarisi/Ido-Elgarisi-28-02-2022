@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
     favoritesList: [],
     searchedCities: null,
-    currCity: null
+    currCity: null,
+    isDarkModeOn: true
   },
 
   getters: {
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     },
     favoritesList(state) {
       return state.favoritesList;
+    },
+    isDarkModeOn(state) {
+      return state.isDarkModeOn
     }
   },
   mutations: {
@@ -48,6 +52,9 @@ export default new Vuex.Store({
       } else state.favoritesList = [{ city: favoriteCity, dailyWeather: null }]
       favoritesService.updateFavoritesList(state.favoritesList)
     },
+    toggleDarkMode(state, { darkMode }) {
+      state.isDarkModeOn = darkMode
+    }
   },
   actions: {
     async loadCurrCity(context, { city }) {
@@ -70,7 +77,8 @@ export default new Vuex.Store({
     },
     async onGetFavoritesList(context) {
       try {
-        let newList = await favoritesService.getFavoritesList() || []
+        let newList = await favoritesService.getFavoritesList()
+
         context.commit({ type: 'setFavoritesList', newList });
       } catch (err) { }
     },
@@ -86,10 +94,11 @@ export default new Vuex.Store({
         const dailyWeather = await weatherService.getDailyWeather(favoriteCity.city.Key)
         newList.push({ city: { ...favoriteCity.city }, dailyWeather })
       })
-      if (newList.length === favoriteCities?.length) {
-        context.commit({ type: 'setFavoritesList', newList });
-        favoritesService.updateFavoritesList(newList)
-      }
+      context.commit({ type: 'setFavoritesList', newList });
+      favoritesService.updateFavoritesList(newList)
+    },
+    onToggleDarkMode(context, { darkMode }) {
+      context.commit({ type: 'toggleDarkMode', darkMode });
     }
   },
   modules: {

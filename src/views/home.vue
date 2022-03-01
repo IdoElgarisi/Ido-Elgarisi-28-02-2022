@@ -1,6 +1,9 @@
 <template>
   <div class="main-container">
-    <div class="app-main flex justify-center column align-center">
+    <div
+      class="app-main flex justify-center column align-center"
+      v-bind:class="{ dark: isDarkMode }"
+    >
       <cities-search
         @selectCity="selectCity"
         @setPlacesSearch="getPlaces"
@@ -21,9 +24,7 @@ export default {
       isFavoriteCity: false,
     };
   },
-  created() {
-    this.loadFavoritesList();
-  },
+  created() {},
   methods: {
     getPlaces(txt) {
       this.$store.dispatch({ type: "onSetSearchCities", txt });
@@ -45,8 +46,15 @@ export default {
     getsearchedCities() {
       return this.$store.getters.searchedCities;
     },
+    isDarkModeOn() {
+      return this.$store.getters.isDarkModeOn;
+    },
   },
-  watch: {},
+  watch: {
+    isDarkModeOn() {
+      this.isDarkMode = this.isDarkModeOn;
+    },
+  },
   components: {
     WeeklyWeather,
     CitiesSearch,

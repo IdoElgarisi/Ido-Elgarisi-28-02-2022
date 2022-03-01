@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app" v-bind:class="{ dark: isDarkModeOn }">
     <app-header />
     <router-view />
   </div>
@@ -19,13 +19,16 @@ export default {
     this.loadInitialCity(this.initialData);
   },
   computed: {
-
+    isDarkModeOn() {
+      return this.$store.getters.isDarkModeOn;
+    },
   },
   methods: {
     loadInitialCity(city) {
       this.$store.dispatch({ type: "loadCurrCity", city });
     },
   },
+  watch: {},
   components: {
     appHeader,
   },

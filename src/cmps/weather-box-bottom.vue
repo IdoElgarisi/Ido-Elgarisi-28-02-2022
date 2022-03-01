@@ -69,7 +69,6 @@ export default {
     };
   },
   created() {
-    console.log("this.availableIcons",this.availableIcons);
     this.weeklyPropsData = this.weeklyData;
     this.fiveDaysForecast = this.weeklyData.DailyForecasts;
   },

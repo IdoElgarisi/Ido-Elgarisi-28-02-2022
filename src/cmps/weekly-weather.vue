@@ -2,6 +2,7 @@
   <div
     v-if="this.currCity"
     class="weather-box-container flex column align-center space-between"
+    v-bind:class="{ dark: isDarkModeOn }"
   >
     <weather-box-top
       :dailyData="this.currCity.currentData"
@@ -12,6 +13,7 @@
   <div
     v-else
     class="weather-box-container flex column align-center space-between"
+    v-bind:class="{ dark: isDarkModeOn }"
   >
     <data-error />
   </div>
@@ -31,9 +33,11 @@ export default {
     currCity() {
       return this.$store.getters.currCity;
     },
+    isDarkModeOn() {
+      return this.$store.getters.isDarkModeOn;
+    },
   },
-  watch: {
-  },
+  watch: {},
   components: { WeatherBoxTop, WeatherBoxBottom, DataError },
 };
 </script,

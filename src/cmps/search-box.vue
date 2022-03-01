@@ -15,7 +15,7 @@
       <ul class="search-results-list">
         <li
           v-for="place in places"
-          :key="place.LocalizedName"
+          :key="place.Key"
           :place="place"
           @click="onSelectPlace(place)"
         >
