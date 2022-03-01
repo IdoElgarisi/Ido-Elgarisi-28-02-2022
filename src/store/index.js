@@ -81,7 +81,6 @@ export default new Vuex.Store({
       context.commit({ type: 'removeFavorite', cityCode });
     },
     async setFavoritesCitiesWeather(context, { favoriteCities }) {
-      console.log(favoriteCities);
       const newList = []
       await favoriteCities?.map(async (favoriteCity) => {
         const dailyWeather = await weatherService.getDailyWeather(favoriteCity.city.Key)
