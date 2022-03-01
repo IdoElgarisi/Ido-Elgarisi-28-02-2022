@@ -16,8 +16,10 @@
         }
         .nav-bar-container {
             width: 35%;
+            min-width: 100px;
             max-width: 150px;
             .nav-bar {
+                width: 100%;
                 a {
                     color: white;
                 }
